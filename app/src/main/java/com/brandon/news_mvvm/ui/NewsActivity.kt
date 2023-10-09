@@ -20,5 +20,7 @@ class NewsActivity : AppCompatActivity() {
         binding.bottomNavigationView.setupWithNavController(newsNavHostFragment.findNavController())
 
 
+
+
     }
 }
