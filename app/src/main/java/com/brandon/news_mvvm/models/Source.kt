@@ -1,4 +1,4 @@
-package com.brandon.news_mvvm
+package com.brandon.news_mvvm.models
 
 
 import com.google.gson.annotations.SerializedName

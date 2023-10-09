@@ -1,6 +1,6 @@
 package com.brandon.news_mvvm.api
 
-import com.brandon.news_mvvm.NewsResponse
+import com.brandon.news_mvvm.models.NewsResponse
 import com.brandon.news_mvvm.util.Constants.Companion.API_KEY
 import retrofit2.Response
 import retrofit2.http.GET
