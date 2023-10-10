@@ -1,5 +1,6 @@
 package com.brandon.news_mvvm.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.AsyncListDiffer
@@ -11,11 +12,12 @@ import com.brandon.news_mvvm.models.Article
 import com.bumptech.glide.Glide
 
 class NewsAdapter() : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
-
+    val TAG = "NewsAdapter"
     inner class ArticleViewHolder(val binding: ItemArticlePreviewBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(article: Article) {
+            Log.d(TAG, article.urlToImage)
             Glide.with(binding.ivArticleImage)
-                .load(article.url)
+                .load(article.urlToImage)
                 .into(binding.ivArticleImage)
             binding.tvSource.text = article.source.name
             binding.tvTitle.text = article.title
