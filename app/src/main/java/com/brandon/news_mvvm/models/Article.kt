@@ -4,14 +4,16 @@ package com.brandon.news_mvvm.models
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
+
 @Entity(
     tableName = "articles",
 )
 data class Article(
     @PrimaryKey(autoGenerate = true)
-    var id: Int? = null,
+    var id: Int? = 0,
     @SerializedName("author")
-    val author: String,
+    val author: String? = "",
     @SerializedName("content")
     val content: String,
     @SerializedName("description")
@@ -21,9 +23,9 @@ data class Article(
     @SerializedName("source")
     val source: Source,
     @SerializedName("title")
-    val title: String,
+    val title: String? = "",
     @SerializedName("url")
     val url: String,
     @SerializedName("urlToImage")
     val urlToImage: String
-)
+) : Serializable

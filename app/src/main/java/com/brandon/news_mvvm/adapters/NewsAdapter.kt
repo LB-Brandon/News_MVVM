@@ -15,16 +15,20 @@ class NewsAdapter() : RecyclerView.Adapter<NewsAdapter.ArticleViewHolder>() {
     val TAG = "NewsAdapter"
     inner class ArticleViewHolder(val binding: ItemArticlePreviewBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(article: Article) {
-            Log.d(TAG, article.urlToImage)
-            Glide.with(binding.ivArticleImage)
+            Glide.with(binding.root.context)
                 .load(article.urlToImage)
                 .into(binding.ivArticleImage)
             binding.tvSource.text = article.source.name
             binding.tvTitle.text = article.title
             binding.tvDescription.text = article.description
             binding.tvPublishedAt.text = article.publishedAt
-            setOnItemClickListener {
-                onItemClickListener?.let {it(article)}
+            binding.root.setOnClickListener{
+                Log.d(TAG, article.toString())
+                val position = adapterPosition
+                if(position != RecyclerView.NO_POSITION){
+                    val clickedArticle = differ.currentList[position]
+                    onItemClickListener?.invoke(clickedArticle)
+                }
             }
         }
     }
