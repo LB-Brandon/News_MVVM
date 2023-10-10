@@ -11,6 +11,7 @@ import com.brandon.news_mvvm.R
 import com.brandon.news_mvvm.databinding.FragmentArticleBinding
 import com.brandon.news_mvvm.ui.NewsActivity
 import com.brandon.news_mvvm.ui.NewsViewModel
+import com.google.android.material.snackbar.Snackbar
 
 class ArticleFragment : Fragment(R.layout.fragment_article) {
     lateinit var binding: FragmentArticleBinding
@@ -33,6 +34,11 @@ class ArticleFragment : Fragment(R.layout.fragment_article) {
             webViewClient = WebViewClient()
             loadUrl(article.url)
         }
-    }
 
+        binding.fab.setOnClickListener{
+            viewModel.saveArticle(article)
+            Snackbar.make(view, "Article saved successfully", Snackbar.LENGTH_SHORT).show()
+        }
+
+    }
 }
